@@ -1,0 +1,73 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+/* .dev {
+    border: 1px pink solid;
+} */
+
+/* Section - Title */
+
+#title {
+    background: url("../img/bg2.png") no-repeat;
+    background-size: cover;
+    padding: 200px 0px 150px 0px;
+}
+
+#title h1 {
+    color: white;
+    letter-spacing: 10px;
+}
+
+.todoPanel {
+  border-radius: 10px;
+  background-color: #ffffff;
+}
+
+/* Section - Todo Title */
+
+#todoTitle {
+  margin-top: -140px;
+  margin-bottom: 10px;
+}
+
+#todoTitle .taskTitle {
+  background-color: #ffffff;
+  padding: 20px;
+}
+
+#todoItem::after {
+  border-bottom: 1px solid gray;
+}
+
+/* Temporary */
+#todo button {
+  border: none;
+  margin-left: 1rem;
+}
+
+/* Section - Content */
+
+#content {
+    padding: 20px;
+    height: 100vh;
+}
+
+#content .todo {
+    padding: 50px;
+    height: 500px;
+    border-radius: 10px;
+}
+
+#content .icon {
+    text-align: center;
+    padding: 5px;
+}
+
+.checkbox label:after {
+  content: '';
+  display: table;
+  clear: both;
+}
+
