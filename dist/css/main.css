@@ -1,73 +1,151 @@
+:root {
+    --background: #ffffff;
+    --text: #000000;
+    --titleColour: white;
+    --emptyTitleColour: rgba(0, 0, 0, 0.637);
+
+    --shadow: 0rem 0.2rem 1rem rgba(37, 37, 37, 0.479);
+
+    /* Fonts */
+    --mainFont: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
 * {
-    margin: 0px;
-    padding: 0px;
+    padding: 0rem;
+    margin: 0rem;
 }
 
-/* .dev {
-    border: 1px pink solid;
-} */
+body {
+    background-color: var(--background);
+}
 
-/* Section - Title */
+/* Container */
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
-#title {
-    background: url("../img/bg2.png") no-repeat;
+/* Banner */
+.banner {
+    background: url("../imgs/bg2.png");
     background-size: cover;
-    padding: 200px 0px 150px 0px;
+    padding: 12rem;
 }
 
-#title h1 {
-    color: white;
-    letter-spacing: 10px;
+/* Main */
+main {
+    background-color: var(--background);
+    color: var(--text);
+    font-family: var(--mainFont);
 }
 
-.todoPanel {
-  border-radius: 10px;
-  background-color: #ffffff;
+/* TODO SECTION */
+#todo {
+    width: 70rem;
+    /* How far the todo list will go up on the banner */
+    margin-top: -11rem;
 }
 
-/* Section - Todo Title */
-
-#todoTitle {
-  margin-top: -140px;
-  margin-bottom: 10px;
+#todo h1.title {
+    color: var(--titleColour);
+    letter-spacing: 0.45rem;
+    font-size: 2.2rem;
 }
 
-#todoTitle .taskTitle {
-  background-color: #ffffff;
-  padding: 20px;
+/* Todo Input */
+#todo .inputField {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    background-color: var(--background);
+    padding: 1rem;
+    border-radius: 1rem;
+    box-shadow: var(--shadow);
+    gap: 1rem;
 }
 
-#todoItem::after {
-  border-bottom: 1px solid gray;
+#todo .inputField input {
+    padding: 0.7rem;
+    border-radius: 0.5rem;
+    border: 0.1rem solid rgba(0, 0, 0, 0.315);
+    flex-grow: 1;
 }
 
-/* Temporary */
-#todo button {
-  border: none;
-  margin-left: 1rem;
-}
-
-/* Section - Content */
-
-#content {
-    padding: 20px;
-    height: 100vh;
-}
-
-#content .todo {
-    padding: 50px;
-    height: 500px;
-    border-radius: 10px;
-}
-
-#content .icon {
+#todo .inputField button {
+    text-decoration: none;
     text-align: center;
-    padding: 5px;
+    border-radius: 0.5rem;
+    border: 0.1rem solid rgba(0, 0, 0, 0.315);
+    color: var(--text);
+    font-size: 1rem;
+    padding: 0.5rem;
+    transition: transform .2s;
+    cursor: pointer;
+    
 }
 
-.checkbox label:after {
-  content: '';
-  display: table;
-  clear: both;
+#todo .inputField button:hover {
+    transform: translateY(-0.1rem);
 }
 
+/* Todo Empty Title */
+#todo h1.hidden {
+    display: none;
+}
+
+/* Todo list */
+#todo .list {
+    background-color: var(--background);
+    box-shadow: var(--shadow);
+    border-radius: 1rem;
+    padding: 1.5rem;
+}
+
+#todo ul {
+    list-style-type: none;
+}
+
+#todo .list h1 {
+    color: var(--emptyTitleColour);
+    text-align: center;
+}
+
+#todo ul li {
+    display: flex;
+    align-items: center;
+}
+
+#todo ul .btn {
+    text-decoration: none;
+    text-align: center;
+    border-radius: 0.5rem;
+    border: 0.1rem solid rgba(0, 0, 0, 0.315);
+    color: var(--text);
+    font-size: 0.9rem;
+    padding: 0.5rem;
+    transition: transform .2s;
+    cursor: pointer;
+}
+
+#todo ul li.checked {
+    background-color: rgba(128, 128, 128, 0.26);
+    border-radius: 0.3rem;
+}
+
+#todo ul li.checked p {
+    text-decoration: line-through;
+    color: rgba(128, 128, 128, 0.26);
+}
+
+/* Todo List Placement */
+#todo ul input {
+    flex-grow: 0.1;
+    border-radius: 20rem;
+}
+#todo ul p {
+    flex-grow: 2;
+}
+#todo ul button {
+    flex-grow: 0.1;
+}
