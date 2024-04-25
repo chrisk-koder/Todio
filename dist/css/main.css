@@ -59,14 +59,13 @@ main {
     margin-bottom: 1.5rem;
     background-color: var(--background);
     padding: 0.5rem;
-    border-radius: 1rem;
+    border-radius: 0.5rem;
     box-shadow: 0rem 0.2rem 1rem rgba(37, 37, 37, 0.479);
-    gap: 1rem;
 }
 
 #todo .inputField input {
     padding: 0.7rem;
-    border-radius: 0.5rem;
+    border-radius: 0.5rem 0 0 0.5rem;
     border: 0.1rem solid rgba(0, 0, 0, 0.315);
     flex-grow: 1;
 }
@@ -74,11 +73,11 @@ main {
 #todo .inputField button {
     text-decoration: none;
     text-align: center;
-    border-radius: 0.5rem;
+    border-radius: 0 0.5rem 0.5rem 0;
     border: 0.1rem solid rgba(0, 0, 0, 0.315);
     color: var(--text);
     font-size: 1rem;
-    padding: 0.5rem;
+    padding: 0.6rem;
     transition: transform .2s;
     cursor: pointer;
     
@@ -154,7 +153,6 @@ main {
 #todo ul .grid {
     display: grid;
     grid-template-columns: auto 90% auto;
-    gap: 1rem;
 }
 
 #todo ul input#editTaskInput {
