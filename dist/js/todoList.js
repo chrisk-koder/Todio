@@ -21,27 +21,67 @@ function saveData(taskID, taskData) {
 // Load data function
 function loadData() {
 
-    for (let i = 0; i < localStorage.length; i++) {
-        const taskID = localStorage.key(i);
-        const taskData = JSON.parse(localStorage.getItem(taskID));
+    if (storageAvailable("localStorage")) {
+        // Loops through storage
+        for (let i = 0; i < localStorage.length; i++) {
+            // Gets the taskID from the task
+            const taskID = localStorage.key(i);
+            // Gets the data that belongs to the taskID
+            const taskData = JSON.parse(localStorage.getItem(taskID));
+            const taskName = taskData.taskName;
+            const isChecked = taskData.isChecked;
+            
+            // Sends the data to the create task elements function which will create the elements on the page
+            createTaskElements(taskID, taskName, isChecked);
+        }
         
-        const taskName = taskData.taskName;
-        const isChecked = taskData.isChecked;
-
-        createTaskElements(taskID, taskName, isChecked);
+        checkIfListIsEmpty();
+        console.log("Tasks retrieved");
+    } else {
+        console.log("LocalStorage is not supported or available");
     }
 
-    checkIfListIsEmpty();
-    console.log("Tasks retrieved");
 }
 
+// Delete data function
 function deleteData(taskID) {
     localStorage.removeItem(taskID);
 }
 
+// Generated a unique ID
 function generateUUID() {
     return Math.random().toString(16).slice(2);
 }
+
+// Checks if LocalStorage is supported and available
+// https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API/Using_the_Web_Storage_API#feature-detecting_localstorage
+function storageAvailable(type) {
+    let storage;
+    try {
+        storage = window[type];
+        const x = "__storage_test__";
+        storage.setItem(x, x);
+        storage.removeItem(x);
+        return true;
+    } catch (e) {
+        return (
+        e instanceof DOMException &&
+        // everything except Firefox
+        (e.code === 22 ||
+            // Firefox
+            e.code === 1014 ||
+            // test name field too, because code might not be present
+            // everything except Firefox
+            e.name === "QuotaExceededError" ||
+            // Firefox
+            e.name === "NS_ERROR_DOM_QUOTA_REACHED") &&
+        // acknowledge QuotaExceededError only if there's something already stored
+        storage &&
+        storage.length !== 0
+        );
+    }
+}
+  
 
 // ------------------------------------------------------------------ //
 
@@ -56,7 +96,8 @@ function checkIfListIsEmpty() {
 
 }
 
-
+// Adds the event listeners to the buttons
+// Was added separately when buttons didn't work on reload. Can probably re-add these to the create task elements class now.
 todoUL.addEventListener("change", function(event) {
     if (event.target && event.target.matches('.checkBox')) {
         markAsComplete(event);
