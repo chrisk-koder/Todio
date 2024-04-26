@@ -44,6 +44,7 @@ main {
     width: 70rem;
     /* How far the todo list will go up on the banner */
     margin-top: -11rem;
+    margin-bottom: 4rem;
 }
 
 #todo h1.title {
