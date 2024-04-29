@@ -11,11 +11,10 @@ window.addEventListener("load", (event) => {
 
 // Save data function
 function saveData(taskID, taskData) {
-
-    // Does not save the state of the checkbox yet
+    // Save the data, taskID being the key, taskData being the value
+    // Task ID is a randomly generated key to make sure it's unique so it's easy to get information about that exact task
     localStorage.setItem(taskID, JSON.stringify(taskData));
     console.log("Data saved");
-
 }
 
 // Load data function
